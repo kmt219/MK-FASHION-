@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: parampara_postgres
+    environment:
+      POSTGRES_USER: parampara
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: parampara_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - parampara_pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: parampara_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - parampara_redis_data:/data
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.4
+    container_name: parampara_es
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - parampara_es_data:/usr/share/elasticsearch/data
+
+volumes:
+  parampara_pg_data:
+  parampara_redis_data:
+  parampara_es_data:
