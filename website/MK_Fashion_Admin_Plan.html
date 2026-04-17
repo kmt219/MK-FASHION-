@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MK Fashion — Admin Dashboard Plan</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#111827;font-size:13px;line-height:1.7;}
+  .print-bar{background:#1a0a2e;color:#fff;padding:13px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+  .print-bar h2{font-size:14px;font-weight:600;}
+  .print-btn{background:#c084fc;color:#fff;border:none;padding:7px 20px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;}
+  .print-btn:hover{background:#a855f7;}
+  @media print{.print-bar{display:none;} body{font-size:11px;}}
+  .cover{background:linear-gradient(135deg,#1a0a2e 0%,#3b0764 45%,#7c3aed 100%);color:#fff;padding:72px 55px;}
+  .cover h1{font-size:38px;font-weight:800;letter-spacing:-1.5px;margin-bottom:6px;}
+  .cover .subtitle{font-size:19px;font-weight:600;margin-bottom:6px;opacity:0.95;}
+  .cover p{font-size:13px;opacity:0.72;margin-bottom:4px;}
+  .cover .meta{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;}
+  .cover .meta span{background:rgba(255,255,255,0.13);padding:4px 14px;border-radius:20px;font-size:11px;}
+  .section{padding:30px 55px;border-bottom:1px solid #f0f0f0;}
+  .section:last-child{border-bottom:none;}
+  h2{font-size:17px;font-weight:700;color:#1a0a2e;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #ede9fe;}
+  h3{font-size:13px;font-weight:600;color:#7c3aed;margin:14px 0 7px;}
+  p{margin-bottom:9px;color:#374151;}
+  ul,ol{padding-left:20px;margin-bottom:11px;}
+  li{margin-bottom:4px;color:#374151;}
+  .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:10px;font-weight:700;}
+  .badge-red{background:#fee2e2;color:#b91c1c;}
+  .badge-yellow{background:#fef9c3;color:#854d0e;}
+  .badge-green{background:#d1fae5;color:#065f46;}
+  .badge-purple{background:#ede9fe;color:#5b21b6;}
+  table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px;}
+  thead tr{background:#1a0a2e;color:#fff;}
+  th{padding:7px 11px;text-align:left;font-weight:600;font-size:11px;letter-spacing:0.3px;}
+  tbody tr:nth-child(even){background:#faf5ff;}
+  td{padding:7px 11px;border-bottom:1px solid #e5e7eb;}
+  code{background:#f3f4f6;border-radius:4px;padding:2px 6px;font-family:'Courier New',monospace;font-size:11px;color:#7c3aed;}
+  pre{background:#0f0a1e;color:#e2e8f0;padding:14px 18px;border-radius:8px;margin:10px 0;font-family:'Courier New',monospace;font-size:11px;line-height:1.6;white-space:pre-wrap;word-break:break-all;}
+  pre code{background:none;color:inherit;padding:0;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+  .card{background:#faf5ff;border:1px solid #ede9fe;border-radius:8px;padding:14px;}
+  .card h4{font-size:12px;font-weight:700;color:#5b21b6;margin-bottom:8px;}
+  .checklist{columns:2;gap:20px;}
+  .checklist li{list-style:none;padding-left:0;break-inside:avoid;}
+  .checklist li::before{content:"☐  ";color:#7c3aed;font-weight:700;}
+  .footer{background:#1a0a2e;color:rgba(255,255,255,0.5);text-align:center;padding:18px;font-size:10px;}
+  .stack-badge{display:inline-block;background:#1a0a2e;color:#c084fc;padding:3px 10px;border-radius:5px;font-size:10px;font-weight:600;margin:2px;}
+</style>
+</head>
+<body>
+
+<!-- PRINT BAR -->
+<div class="print-bar">
+  <h2>🛍️ MK Fashion — Admin Dashboard Implementation Plan</h2>
+  <button class="print-btn" onclick="window.print()">🖨️ Save as PDF (Ctrl+P)</button>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>🛍️ MK Fashion</h1>
+  <div class="subtitle">Admin Dashboard — Full Implementation Plan</div>
+  <p>Complete blueprint for building the e-commerce admin panel from scratch</p>
+  <div class="meta">
+    <span>📅 April 16, 2026</span>
+    <span>🛠 Next.js 14 · NestJS · TypeScript · TailwindCSS v3</span>
+    <span>🗂 Monorepo: Turborepo + pnpm</span>
+    <span>📁 12 Routes · 14 Components · 3 Phases · 7 Days</span>
+  </div>
+</div>
+
+<!-- 1. PROJECT CONTEXT -->
+<div class="section">
+  <h2>🏗️ 1. Project Context &amp; Stack</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>📁 Monorepo Structure</h4>
+      <ul>
+        <li><strong>Frontend:</strong> <code>apps/frontend</code> — Next.js 14</li>
+        <li><strong>Backend API:</strong> <code>apps/api</code> — NestJS</li>
+        <li><strong>ML Service:</strong> <code>apps/ml-service</code> — Python</li>
+        <li><strong>Config packages:</strong> <code>packages/config</code></li>
+        <li><strong>Builder:</strong> Turborepo + pnpm workspaces</li>
+        <li><strong>CMS:</strong> Keystatic (already installed)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📦 Current Frontend Stack</h4>
+      <span class="stack-badge">Next.js 14</span>
+      <span class="stack-badge">TypeScript</span>
+      <span class="stack-badge">TailwindCSS v3</span>
+      <span class="stack-badge">Framer Motion</span>
+      <span class="stack-badge">Lucide React</span>
+      <span class="stack-badge">Zustand</span>
+      <span class="stack-badge">TanStack Query</span>
+      <span class="stack-badge">Keystatic CMS</span>
+      <h4 style="margin-top:12px;">✅ Admin Route Already Exists</h4>
+      <p style="font-size:11px;"><code>src/app/admin/layout.tsx</code> + <code>page.tsx</code> are already scaffolded — we build on top of them!</p>
+    </div>
+  </div>
+  <div class="card">
+    <h4>📦 New Dependencies to Install</h4>
+    <pre>cd apps/frontend
+npm install recharts date-fns react-hot-toast @tanstack/react-table
+# recharts        — Charts (Line, Bar, Pie, Area)
+# date-fns        — Date formatting & range math
+# react-hot-toast — Toast notifications for admin actions
+# @tanstack/react-table — Powerful headless data tables</pre>
+  </div>
+</div>
+
+<!-- 2. FOLDER STRUCTURE -->
+<div class="section">
+  <h2>📁 2. Target Folder Structure</h2>
+  <pre>apps/frontend/src/
+├── app/
+│   ├── admin/
+│   │   ├── layout.tsx                  ← ✅ EXISTS — enhance with sidebar + topbar
+│   │   ├── page.tsx                    ← ✅ EXISTS — rebuild as full dashboard
+│   │   ├── login/page.tsx              ← 🆕 Password auth gate
+│   │   ├── products/
+│   │   │   ├── page.tsx                ← 🆕 Product list + filters
+│   │   │   └── [id]/page.tsx           ← 🆕 Add / Edit product form
+│   │   ├── categories/page.tsx         ← 🆕 Category tree manager
+│   │   ├── orders/
+│   │   │   ├── page.tsx                ← 🆕 Order list + status filters
+│   │   │   └── [id]/page.tsx           ← 🆕 Order detail + status update
+│   │   ├── customers/page.tsx          ← 🆕 Customer table + profiles
+│   │   ├── analytics/page.tsx          ← 🆕 Sales & traffic charts
+│   │   ├── promotions/page.tsx         ← 🆕 Coupon & discount manager
+│   │   ├── content/page.tsx            ← 🆕 Banner & homepage CMS
+│   │   ├── reviews/page.tsx            ← 🆕 Review moderation queue
+│   │   └── settings/page.tsx           ← 🆕 Store config & payment setup
+│   └── api/
+│       └── admin/                      ← 🆕 Internal Next.js API proxy routes
+│           ├── products/route.ts
+│           ├── orders/route.ts
+│           ├── customers/route.ts
+│           └── stats/route.ts
+├── components/
+│   └── admin/
+│       ├── AdminSidebar.tsx            ← 🆕 Collapsible dark sidebar
+│       ├── AdminTopbar.tsx             ← 🆕 Breadcrumb + actions bar
+│       ├── StatCard.tsx                ← 🆕 Animated KPI stat card
+│       ├── SalesChart.tsx              ← 🆕 Revenue line/bar chart
+│       ├── ProductsTable.tsx           ← 🆕 Product data table + actions
+│       ├── ProductForm.tsx             ← 🆕 Add/Edit product form + image upload
+│       ├── OrdersTable.tsx             ← 🆕 Orders table with status badges
+│       ├── OrderDetail.tsx             ← 🆕 Full order breakdown card
+│       ├── CustomersTable.tsx          ← 🆕 Customers table + profile drawer
+│       ├── CategoryManager.tsx         ← 🆕 Drag-and-drop category tree
+│       ├── PromotionsManager.tsx       ← 🆕 Coupon CRUD UI
+│       ├── ContentEditor.tsx           ← 🆕 Banner & section editor
+│       ├── ReviewsList.tsx             ← 🆕 Moderation queue list
+│       └── SettingsPanel.tsx           ← 🆕 Settings form sections
+└── lib/
+    ├── adminAuth.ts                    ← 🆕 Auth guard hook
+    ├── adminApi.ts                     ← 🆕 Admin API client (calls NestJS)
+    ├── mockData.ts                     ← 🆕 Dev-time fake data
+    └── types/admin.ts                  ← 🆕 Admin-specific TS interfaces</pre>
+</div>
+
+<!-- 3. PHASE 1 -->
+<div class="section">
+  <h2>🔴 3. Phase 1 — Shell, Auth &amp; Dashboard <span style="font-size:11px;font-weight:400;color:#6b7280;">(Day 1–2)</span></h2>
+
+  <h3>Step 1 · Auth Guard &amp; Login Page</h3>
+  <ul>
+    <li>Create <code>src/lib/adminAuth.ts</code> — custom hook reads <code>sessionStorage.admin_auth</code></li>
+    <li>Login page at <code>/admin/login</code> — password input with show/hide toggle + animated submit</li>
+    <li>Correct password sets auth cookie → redirect to <code>/admin</code></li>
+    <li>Admin <code>layout.tsx</code> runs guard — redirects to <code>/admin/login</code> if unauthenticated</li>
+    <li>Password stored in <code>.env.local</code> as <code>NEXT_PUBLIC_ADMIN_PASSWORD</code></li>
+  </ul>
+
+  <h3>Step 2 · Admin Layout Shell (enhance existing)</h3>
+  <ul>
+    <li>Rebuild <code>admin/layout.tsx</code> with full sidebar + topbar layout</li>
+    <li>Left sidebar: store logo, nav links with Lucide icons, user avatar + logout at bottom</li>
+    <li>Active route highlighted with purple accent + left border glow</li>
+    <li>Collapsible sidebar (icon-only mode) — state persisted in Zustand</li>
+    <li>Top bar: breadcrumb trail, search icon, notification bell, admin name</li>
+    <li>Framer Motion <code>AnimatePresence</code> wraps pages for smooth transitions</li>
+  </ul>
+
+  <h3>Step 3 · Dashboard Overview (rebuild existing <code>/admin</code> page)</h3>
+  <table>
+    <thead><tr><th>KPI Card</th><th>Metric</th><th>Accent Color</th></tr></thead>
+    <tbody>
+      <tr><td>💰 Total Revenue</td><td>All-time + today's revenue</td><td>Emerald</td></tr>
+      <tr><td>🛒 Total Orders</td><td>Orders today / pending count</td><td>Indigo</td></tr>
+      <tr><td>👗 Products</td><td>Total active vs draft vs archived</td><td>Purple</td></tr>
+      <tr><td>👥 Customers</td><td>Total + new this month</td><td>Amber</td></tr>
+    </tbody>
+  </table>
+  <p><strong>Charts &amp; Feed below cards:</strong></p>
+  <ul>
+    <li>Area chart — revenue over last 30 days</li>
+    <li>Bar chart — orders per day (last 14 days)</li>
+    <li>Pie chart — order status breakdown (Pending / Processing / Shipped / Delivered)</li>
+    <li>Recent orders feed — last 10 orders with customer name, amount, status badge</li>
+    <li>Top-selling products table — rank, name, image thumbnail, units sold, revenue</li>
+    <li>Low-stock alerts widget — products below threshold</li>
+  </ul>
+</div>
+
+<!-- 4. PHASE 2 -->
+<div class="section">
+  <h2>🟡 4. Phase 2 — Product, Order &amp; Customer Management <span style="font-size:11px;font-weight:400;color:#6b7280;">(Day 3–5)</span></h2>
+
+  <h3>Step 4 · Product Management <code>/admin/products</code></h3>
+  <ul>
+    <li><strong>Product list table:</strong> Image thumbnail · Name · Category · Price · Stock · Status badge · Actions</li>
+    <li>Search by name · Filter by category, status (Active/Draft/Archived), stock level</li>
+    <li>Bulk actions: Bulk delete · Bulk publish · Bulk archive</li>
+    <li>Row actions: Edit · Duplicate · Delete (with confirm modal)</li>
+    <li>Pagination — 15 products per page</li>
+    <li>"+ Add Product" button → opens <code>/admin/products/new</code></li>
+  </ul>
+
+  <h3>Step 5 · Product Add/Edit Form <code>/admin/products/[id]</code></h3>
+  <ul>
+    <li>Basic Info: Name, Description (rich text), SKU, Brand</li>
+    <li>Pricing: Price, Compare-at price, Cost per item, Taxable toggle</li>
+    <li>Inventory: Stock count, Low stock threshold, Track inventory toggle</li>
+    <li>Variants: Add size/color/material variants with individual stock per variant</li>
+    <li>Images: Multi-image upload with drag-and-drop reorder, set primary image</li>
+    <li>Category: Select from category tree (multi-select for subcategories)</li>
+    <li>SEO: Meta title, meta description, URL slug (auto-generated from name)</li>
+    <li>Status: Draft / Active / Archived toggle</li>
+    <li>Save as Draft · Publish buttons</li>
+  </ul>
+
+  <h3>Step 6 · Category Management <code>/admin/categories</code></h3>
+  <ul>
+    <li>Visual nested tree: Parent → Child categories (e.g., Sarees → Silk Sarees)</li>
+    <li>Drag-and-drop reordering within same level</li>
+    <li>Inline add/edit/delete category nodes</li>
+    <li>Category banner image upload</li>
+    <li>Visibility toggle per category (Show/Hide on storefront)</li>
+  </ul>
+
+  <h3>Step 7 · Order Management <code>/admin/orders</code></h3>
+  <ul>
+    <li><strong>Table columns:</strong> Order # · Customer · Date · Items · Total · Payment status · Delivery status · Actions</li>
+    <li>Filter tabs: All / Pending / Processing / Shipped / Delivered / Cancelled / Refunded</li>
+    <li>Search by order ID, customer name, or email</li>
+    <li>Date range filter · Sort by date, amount</li>
+    <li>Bulk actions: Mark as shipped · Export selected</li>
+    <li>Actions: View detail · Print invoice PDF</li>
+  </ul>
+
+  <h3>Step 8 · Order Detail <code>/admin/orders/[id]</code></h3>
+  <ul>
+    <li>Order summary: items, quantities, images, unit prices, subtotal, tax, shipping, total</li>
+    <li>Customer details: name, email, phone, shipping address</li>
+    <li>Order status stepper: Placed → Confirmed → Shipped → Delivered</li>
+    <li>Status update dropdown with timestamp log</li>
+    <li>Add tracking number + carrier name</li>
+    <li>Refund / Cancel order button (with reason modal)</li>
+    <li>Download invoice as PDF</li>
+    <li>Internal admin notes field (private, not visible to customer)</li>
+  </ul>
+
+  <h3>Step 9 · Customer Management <code>/admin/customers</code></h3>
+  <ul>
+    <li><strong>Table columns:</strong> Avatar · Name · Email · Phone · Total Orders · Total Spent · Joined · Status · Actions</li>
+    <li>Search by name/email · Filter by status (Active/Blocked)</li>
+    <li>Click row → slide-out profile drawer with order history</li>
+    <li>Actions: View · Block/Unblock · Delete</li>
+    <li>Export to CSV (all or filtered customers)</li>
+  </ul>
+</div>
+
+<!-- 5. PHASE 3 -->
+<div class="section">
+  <h2>🟢 5. Phase 3 — Analytics, Promotions, Content &amp; Settings <span style="font-size:11px;font-weight:400;color:#6b7280;">(Day 6–7)</span></h2>
+
+  <h3>Step 10 · Analytics <code>/admin/analytics</code></h3>
+  <table>
+    <thead><tr><th>Chart / Widget</th><th>Data Shown</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue trend</td><td>Daily/Weekly/Monthly revenue line chart with toggle</td></tr>
+      <tr><td>Orders volume</td><td>Orders per period with bar chart</td></tr>
+      <tr><td>Category performance</td><td>Revenue by category (Sarees, Lehengas, Kurtis…)</td></tr>
+      <tr><td>Customer growth</td><td>New customers per month cumulative area chart</td></tr>
+      <tr><td>Top products</td><td>Best-selling products table (units + revenue)</td></tr>
+      <tr><td>Geo breakdown</td><td>Orders by city/state (table)</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li>Date range picker (Last 7d / 30d / 90d / Custom)</li>
+    <li>Export report as CSV or PDF download</li>
+  </ul>
+
+  <h3>Step 11 · Promotions &amp; Discounts <code>/admin/promotions</code></h3>
+  <ul>
+    <li><strong>Coupon creator:</strong> Code · Type (% or fixed ₹) · Value · Min order · Expiry date · Usage limit · Active toggle</li>
+    <li>Coupon table: code, type, value, uses remaining, expiry, status badge, copy &amp; delete</li>
+    <li><strong>Flash sale widget:</strong> Set product(s) on sale with countdown timer + discounted price</li>
+    <li><strong>Free shipping threshold:</strong> Set minimum cart value for free shipping</li>
+  </ul>
+
+  <h3>Step 12 · Content Management <code>/admin/content</code></h3>
+  <ul>
+    <li><strong>Homepage banner:</strong> Upload hero image, set headline, subheadline, CTA link</li>
+    <li><strong>Announcement bar:</strong> Site-wide top banner text (sale alerts, policy notices)</li>
+    <li><strong>Featured collections:</strong> Choose which categories appear on homepage</li>
+    <li><strong>Sale banners:</strong> Upload promotional banners for category pages</li>
+    <li>Live preview toggle · Publish changes button</li>
+  </ul>
+
+  <h3>Step 13 · Reviews Moderation <code>/admin/reviews</code></h3>
+  <ul>
+    <li>Review list: product image, product name, customer, star rating, review text, date, status</li>
+    <li>Filter: All / Approved / Pending / Rejected</li>
+    <li>Actions: ✅ Approve · ❌ Reject · 🗑️ Delete</li>
+    <li>Admin reply input field per review</li>
+    <li>Rating analytics: avg rating per product, distribution chart</li>
+  </ul>
+
+  <h3>Step 14 · Settings <code>/admin/settings</code></h3>
+  <ul>
+    <li><strong>Store Info:</strong> Store name, logo, favicon, contact email, phone, address</li>
+    <li><strong>Currency &amp; Tax:</strong> Currency (₹ INR), GST % per category</li>
+    <li><strong>Shipping:</strong> Zones by state/pincode, flat rate / free threshold / weight-based</li>
+    <li><strong>Payment Methods:</strong> Enable/disable UPI, Cards, COD, Wallets</li>
+    <li><strong>Notifications:</strong> New order email, low stock alert, daily summary email</li>
+    <li><strong>Admin Users:</strong> Add/remove admins, set roles (Super Admin / Manager / Support)</li>
+    <li><strong>API Keys:</strong> Payment gateway keys (masked + reveal toggle)</li>
+    <li><strong>Danger Zone:</strong> Clear all sessions / reset store data</li>
+  </ul>
+</div>
+
+<!-- 6. DESIGN SYSTEM -->
+<div class="section">
+  <h2>🎨 6. Design System</h2>
+  <div class="grid-2">
+    <div>
+      <h3>Color Tokens</h3>
+      <table>
+        <thead><tr><th>Token</th><th>Hex</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td><code>--bg-base</code></td><td>#050108</td><td>Page background</td></tr>
+          <tr><td><code>--bg-surface</code></td><td>#0f0520</td><td>Sidebar background</td></tr>
+          <tr><td><code>--bg-card</code></td><td>#1a0a2e</td><td>Cards &amp; panels</td></tr>
+          <tr><td><code>--accent-purple</code></td><td>#7c3aed</td><td>Primary violet</td></tr>
+          <tr><td><code>--accent-pink</code></td><td>#c084fc</td><td>Hover / highlights</td></tr>
+          <tr><td><code>--success</code></td><td>#10b981</td><td>Active / positive</td></tr>
+          <tr><td><code>--warning</code></td><td>#f59e0b</td><td>Pending / caution</td></tr>
+          <tr><td><code>--danger</code></td><td>#ef4444</td><td>Cancel / delete</td></tr>
+          <tr><td><code>--text-primary</code></td><td>#f9fafb</td><td>Headings</td></tr>
+          <tr><td><code>--text-muted</code></td><td>#9ca3af</td><td>Labels &amp; captions</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Typography — Inter (already installed)</h4>
+      <ul>
+        <li>Page headings: <code>700–800 weight</code></li>
+        <li>Section labels: <code>500 weight, uppercase, tracking-wide</code></li>
+        <li>Body text: <code>400 weight</code>, gray-300</li>
+        <li>Table cells: <code>400 weight</code>, gray-200</li>
+      </ul>
+      <h4 style="margin-top:12px;">Animations (Framer Motion — already installed)</h4>
+      <ul>
+        <li>Page mount: <code>fadeInUp</code> with staggered children</li>
+        <li>Stat cards: animated number counter on mount</li>
+        <li>Sidebar: smooth expand/collapse spring</li>
+        <li>Tables: row hover lift + purple highlight</li>
+        <li>Modals: scale + fade entrance</li>
+        <li>Drawers: slide-in from right</li>
+        <li>Toast notifications: slide up via react-hot-toast</li>
+      </ul>
+      <h4 style="margin-top:12px;">Responsive Behaviour</h4>
+      <ul>
+        <li>Desktop (&gt;1024px): Full sidebar + content area</li>
+        <li>Tablet (768–1024px): Collapsed icon sidebar</li>
+        <li>Mobile (&lt;768px): Hamburger menu, sidebar as overlay drawer</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 7. API INTEGRATION -->
+<div class="section">
+  <h2>🔌 7. API Integration (Frontend ↔ NestJS)</h2>
+  <p>The admin frontend communicates with the <strong>NestJS API</strong> at <code>apps/api</code> via <strong>TanStack Query</strong> (already installed). Admin API calls are centralized in <code>src/lib/adminApi.ts</code>.</p>
+  <table>
+    <thead><tr><th>Page</th><th>NestJS Endpoint</th><th>Method</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Dashboard</td><td><code>/admin/stats</code></td><td>GET</td><td>KPI cards + chart data</td></tr>
+      <tr><td>Products list</td><td><code>/products</code></td><td>GET</td><td>Paginated product list</td></tr>
+      <tr><td>Product form</td><td><code>/products/:id</code></td><td>GET/POST/PATCH/DELETE</td><td>CRUD single product</td></tr>
+      <tr><td>Orders list</td><td><code>/orders</code></td><td>GET</td><td>Paginated + filtered orders</td></tr>
+      <tr><td>Order detail</td><td><code>/orders/:id</code></td><td>GET/PATCH</td><td>View + update order status</td></tr>
+      <tr><td>Customers</td><td><code>/customers</code></td><td>GET/PATCH/DELETE</td><td>List + manage customers</td></tr>
+      <tr><td>Categories</td><td><code>/categories</code></td><td>GET/POST/PATCH/DELETE</td><td>Category tree CRUD</td></tr>
+      <tr><td>Analytics</td><td><code>/admin/analytics</code></td><td>GET</td><td>Sales &amp; traffic metrics</td></tr>
+      <tr><td>Promotions</td><td><code>/promotions</code></td><td>GET/POST/PATCH/DELETE</td><td>Coupon management</td></tr>
+      <tr><td>Reviews</td><td><code>/reviews</code></td><td>GET/PATCH/DELETE</td><td>Review moderation</td></tr>
+      <tr><td>Settings</td><td><code>/admin/settings</code></td><td>GET/PATCH</td><td>Store configuration</td></tr>
+    </tbody>
+  </table>
+  <p><em>During development, all calls are served by <code>src/lib/mockData.ts</code> — no NestJS server needed until Phase 2+.</em></p>
+</div>
+
+<!-- 8. TIMELINE -->
+<div class="section">
+  <h2>📅 8. Build Timeline — 7 Days</h2>
+  <table>
+    <thead><tr><th>Day</th><th>Phase</th><th>Deliverables</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Day 1</strong></td><td><span class="badge badge-red">🔴 Phase 1</span></td><td>Auth guard + login page + rebuild admin layout (sidebar + topbar)</td></tr>
+      <tr><td><strong>Day 2</strong></td><td><span class="badge badge-red">🔴 Phase 1</span></td><td>Dashboard — animated KPI cards + area chart + bar chart + order feed + top products</td></tr>
+      <tr><td><strong>Day 3</strong></td><td><span class="badge badge-yellow">🟡 Phase 2</span></td><td>Product list table + filters + bulk actions + Product Add/Edit form + image upload</td></tr>
+      <tr><td><strong>Day 4</strong></td><td><span class="badge badge-yellow">🟡 Phase 2</span></td><td>Category tree manager + Orders list + Order detail page + status stepper</td></tr>
+      <tr><td><strong>Day 5</strong></td><td><span class="badge badge-yellow">🟡 Phase 2</span></td><td>Customer table + profile drawer + order history + block/export features</td></tr>
+      <tr><td><strong>Day 6</strong></td><td><span class="badge badge-green">🟢 Phase 3</span></td><td>Analytics charts + Promotions / coupon manager + Content / banner CMS editor</td></tr>
+      <tr><td><strong>Day 7</strong></td><td><span class="badge badge-green">🟢 Phase 3</span></td><td>Reviews moderation + Settings panel + global polish + responsive fixes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 9. CHECKLIST -->
+<div class="section">
+  <h2>✅ 9. Completion Checklist</h2>
+  <ul class="checklist">
+    <li><code>/admin/login</code> — Auth gate</li>
+    <li><code>/admin</code> — Full dashboard KPIs + charts</li>
+    <li><code>/admin/products</code> — Product list + filters</li>
+    <li><code>/admin/products/[id]</code> — Add/Edit form</li>
+    <li><code>/admin/categories</code> — Category tree</li>
+    <li><code>/admin/orders</code> — Filtered order list</li>
+    <li><code>/admin/orders/[id]</code> — Order detail + status</li>
+    <li><code>/admin/customers</code> — Customer table</li>
+    <li><code>/admin/analytics</code> — Sales &amp; traffic charts</li>
+    <li><code>/admin/promotions</code> — Coupon CRUD</li>
+    <li><code>/admin/content</code> — Banner &amp; homepage CMS</li>
+    <li><code>/admin/reviews</code> — Review moderation</li>
+    <li><code>/admin/settings</code> — Store config</li>
+    <li>Responsive on mobile + tablet + desktop</li>
+  </ul>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  MK Fashion · Admin Dashboard Implementation Plan · April 16, 2026 · Next.js 14 · NestJS · TypeScript · TailwindCSS v3 · Turborepo
+</div>
+</body>
+</html>

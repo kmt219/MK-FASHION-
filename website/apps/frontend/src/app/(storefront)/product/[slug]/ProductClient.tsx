@@ -59,7 +59,13 @@ export default function ProductClient({ product }: { product: any }) {
 
              {/* Primary Conversion Actions */}
              <div className="space-y-4 mb-14">
-               <button className="w-full bg-brand-burgundy text-white py-5 font-bold tracking-[0.2em] text-sm hover:bg-brand-gold transition-colors shadow-xl">
+               <button 
+                 onClick={() => {
+                   const message = `Hi MK Fashion team, I would like to purchase the following item:%0A%0A*${product.name}*%0A*Price*: ₹${product.price.toLocaleString('en-IN')}%0A*Link*: ${window.location.href}%0A%0APlease let me know the next steps for payment and delivery.`;
+                   window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+                 }}
+                 className="w-full bg-brand-burgundy text-white py-5 font-bold tracking-[0.2em] text-sm hover:bg-brand-gold transition-colors shadow-xl"
+               >
                  BUY IT NOW
                </button>
              </div>
