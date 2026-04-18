@@ -82,7 +82,7 @@ export default function AdminDashboard() {
               <XAxis dataKey="day" tick={{ fill: '#475569', fontSize: 9 }} tickLine={false} axisLine={false} interval={5} />
               <YAxis tick={{ fill: '#475569', fontSize: 9 }} tickLine={false} axisLine={false} tickFormatter={v => `₹${(v / 1000).toFixed(0)}k`} width={42} />
               <Tooltip contentStyle={{ background: '#1a0a2e', border: '1px solid rgba(124,58,237,0.3)', borderRadius: 10, color: '#f9fafb', fontSize: 11 }}
-                formatter={(v: number) => [`₹${v.toLocaleString()}`, 'Revenue']} />
+                formatter={(v: any) => [`₹${Number(v).toLocaleString()}`, 'Revenue']} />
               <Area type="monotone" dataKey="revenue" stroke="#7c3aed" strokeWidth={2} fill="url(#revGrad)" dot={false} />
             </AreaChart>
           </ResponsiveContainer>
